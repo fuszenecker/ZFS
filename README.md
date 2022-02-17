@@ -19,6 +19,14 @@ zpool create \
     zfspool ${DISK}
 ```
 
+Compatibility:
+
+```
+zpool create -o compatibility=grub2 bootpool ${DISK}
+```
+
+See `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/compatibility.d`.
+
 All features disabled:
 
 ```
