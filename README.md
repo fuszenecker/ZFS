@@ -25,6 +25,7 @@ zpool create \
     -O relatime=on \
     -O xattr=sa \
     -O normalization=formD \
+    -m /media/zfspool
     zfspool ${DISK}
 ```
 
