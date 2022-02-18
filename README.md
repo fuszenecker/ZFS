@@ -61,7 +61,7 @@ systemctl enable zfs.target zfs-import.service zfs-mount.service
 Creating a filesystem:
 
 ```
-zfs create -o encryption=on -o keylocation=prompt -o keyformat=passphrase zfspool/encrypted
+zfs create -o encryption=aes-256-gcm -o keylocation=prompt -o keyformat=passphrase zfspool/encrypted
 ```
 
 Loading the key:
