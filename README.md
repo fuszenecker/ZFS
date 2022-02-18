@@ -12,10 +12,14 @@ Enable few features (when e.g. creating a ZFS pool) in order to do some performa
 
 ```
 zpool create \
-    -o ashift=12 -o autotrim=on \
-    -O acltype=posixacl -O compression=zstd-fast \
-    -O dnodesize=auto -O normalization=formD -O relatime=on \
-    -O xattr=sa [...] \
+    -o ashift=12 
+    -o autotrim=on \
+    -O compression=zstd \
+    -O acltype=posix \
+    -O atime=on \
+    -O relatime=on \
+    -O xattr=sa \
+    -O normalization=formD \
     zfspool ${DISK}
 ```
 
@@ -70,13 +74,12 @@ sudo zpool create \
     -o feature@async_destroy=disabled \
     -o feature@zstd_compress=enabled \
     -o feature@lz4_compress=disabled \
-    -O compression=zstd-fast \
-    -O atime=off \
-    -O devices=off \
-    -O setuid=off \
+    -O compression=zstd \
     -O acltype=posix \
+    -O atime=on \
     -O relatime=on \
     -O xattr=sa \
+    -O normalization=formD \
     zfspool ${DISK}
 ```
 
