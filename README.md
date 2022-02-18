@@ -41,19 +41,35 @@ zpool import -d /dev/disk/by-partlabel
 On older systems, enable ZFS services:
 
 ```
-sudo systemctl enable zfs-import-cache
-sudo systemctl enable zfs-import-scan
-sudo systemctl enable zfs-import.target
-sudo systemctl enable zfs-mount
-sudo systemctl enable zfs-share
-sudo systemctl enable zfs-zed
-sudo systemctl enable zfs.target
+systemctl enable zfs-import-cache
+systemctl enable zfs-import-scan
+systemctl enable zfs-import.target
+systemctl enable zfs-mount
+systemctl enable zfs-share
+systemctl enable zfs-zed
+systemctl enable zfs.target
 ```
 
 On newer systems:
 
 ```
-sudo systemctl enable zfs.target zfs-import.service zfs-mount.service
+systemctl enable zfs.target zfs-import.service zfs-mount.service
+```
+
+## Encryption
+
+Creating a filesystem:
+
+```
+zfs create -o encryption=on -o keylocation=prompt -o keyformat=passphrase zfspool/encrypted
+```
+
+Loading the key:
+
+```
+zfs load-key -r zfspool/encrypted
+zfs get keystatus zfspool/encrypted
+zfs mount zfspool/encrypted
 ```
 
 ## Sharing with NFS
@@ -67,7 +83,5 @@ zfs set sharenfs="rw=192.168.100.204,rw=rpi4.local" zfs/db
 Check if the share has been exported:
 
 ```
-fuszenecker@rpi4:/media/zfsd/db $ showmount -e
-Export list for rpi4.local:
-/media/zfs/db 192.168.100.204
+showmount -e
 ```
