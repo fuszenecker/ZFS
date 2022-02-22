@@ -39,6 +39,13 @@ zpool import -d /dev/disk/by-partlabel
 
 ## Starting services with systemd
 
+On newer systems:
+
+```
+systemctl enable zfs.target zfs-import.service zfs-mount.service
+systemctl start zfs.target zfs-import.service zfs-mount.service
+```
+
 On older systems, enable ZFS services:
 
 ```
@@ -49,12 +56,6 @@ systemctl enable zfs-mount
 systemctl enable zfs-share
 systemctl enable zfs-zed
 systemctl enable zfs.target
-```
-
-On newer systems:
-
-```
-systemctl enable zfs.target zfs-import.service zfs-mount.service
 ```
 
 ## Encryption
