@@ -29,7 +29,12 @@ zpool create \
     zfspool ${DISK}
 ```
 
-Compatibility: see `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/compatibility.d`.
+Compatibility: see `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/compatibility.d`. Good candidates are:
+
+* grub2 (for root pools)
+* zol-0.8 (= ubuntu-20.04)
+* openzfs-2.0-linux (everything except DRAID)
+* openzfs-2.1-linux (everything)
 
 ## Importing with right names
 
