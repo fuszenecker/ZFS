@@ -71,7 +71,7 @@ Creating a filesystem:
 zfs create -o encryption=aes-256-gcm -o keylocation=prompt -o keyformat=passphrase zfspool/encrypted
 ```
 
-Loading the key:
+Loading the key and mounting the filesystem:
 
 ```
 zfs load-key -r zfspool/encrypted
