@@ -79,11 +79,12 @@ Enable NFS share on your ZFS filesystem:
 
 ```
 zfs set sharenfs="rw=192.168.100.204,rw=rpi4.local" zfspool/shared
-zfs set sharenfs="rw=@192.168.100.0/24,sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check" zfspool/shared
+zfs set sharenfs="rw=@192.168.100.0/24,sync,root_squash,no_subtree_check" zfspool/shared
 ```
 
 Check if the share has been exported:
 
 ```
+exportfs -s
 showmount -e
 ```
