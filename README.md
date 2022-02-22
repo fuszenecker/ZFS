@@ -82,6 +82,12 @@ zfs set sharenfs="rw=192.168.100.204,rw=rpi4.local" zfspool/shared
 zfs set sharenfs="rw=@192.168.100.0/24,sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check" zfspool/shared
 ```
 
+or 
+
+```
+exportfs -o sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check 192.168.100.0/24:/media/zfs/shared
+```
+
 Check if the share has been exported:
 
 ```
