@@ -85,6 +85,7 @@ zfs set sharenfs="rw=@192.168.100.0/24,sync,sec=krb5:krb5i:krb5p,root_squash,no_
 or 
 
 ```
+zfs set sharenfs=on zfspool/shared
 exportfs -o sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check 192.168.100.0/24:/media/zfs/shared
 ```
 
