@@ -81,7 +81,7 @@ zfs mount zfspool/encrypted
 
 ## Sharing with NFS
 
-Enable NFS share on your ZFS filesystem:
+Enable NFS share on your ZFS filesystem (service principal for NFS server: `nfs/server@REALM`):
 
 ```
 zfs set sharenfs="rw=192.168.100.204,rw=rpi4.local" zfspool/shared
