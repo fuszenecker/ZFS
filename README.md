@@ -6,7 +6,10 @@ Set the L2ARC size to a size that make sense on your hardware, edit `/etc/modpro
 
 ```
 options zfs zfs_arc_max=536870912
+options zfs zfs_arc_min=536870912
 ```
+
+256 M is `268435456`.
 
 This is 512M on my 4G Raspberry Pi.
 
