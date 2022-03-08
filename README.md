@@ -36,7 +36,7 @@ Compatibility: see `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/co
 
 * grub2: for root pools
 * zol-0.8 = ubuntu-20.04
-* openzfs-2.0-freebsd: everything, except DRAID and EONR (used for deduplication)
+* openzfs-2.0-freebsd: everything, except DRAID and EDONR (used for deduplication)
 * openzfs-2.0-linux: everything, except DRAID
 * openzfs-2.1-linux: everything
 
