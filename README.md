@@ -78,6 +78,12 @@ zfs create -o encryption=aes-256-gcm -o keylocation=prompt -o keyformat=passphra
 Loading the key and mounting the filesystem:
 
 ```
+zpool import -l zfspool
+```
+
+or manually:
+
+```
 zfs load-key -r zfspool/encrypted
 zfs get keystatus zfspool/encrypted
 zfs mount zfspool/encrypted
