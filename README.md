@@ -51,20 +51,8 @@ zpool import -d /dev/disk/by-partlabel
 On newer systems:
 
 ```
-systemctl enable zfs.target zfs-import.service zfs-mount.service
-systemctl start zfs.target zfs-import.service zfs-mount.service
-```
-
-On older systems, enable ZFS services:
-
-```
-systemctl enable zfs-import-cache
-systemctl enable zfs-import-scan
-systemctl enable zfs-import.target
-systemctl enable zfs-mount
-systemctl enable zfs-share
-systemctl enable zfs-zed
-systemctl enable zfs.target
+systemctl enable zfs-import-cache zfs-import-scan zfs-import.target zfs-mount zfs-share zfs-volume-wait zfs-volumes.target zfs-zed zfs.target
+systemctl start zfs-import-cache zfs-import-scan zfs-import.target zfs-mount zfs-share zfs-volume-wait zfs-volumes.target zfs-zed zfs.target
 ```
 
 ## Encryption
