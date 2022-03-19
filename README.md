@@ -101,10 +101,12 @@ showmount -e
 ## DKMS
 
 ```
-scripts/dkms.mkconf -n zfs -v 2.0.3 -f dkms.conf
-sudo dkms add -m zfs -v 2.0.3
-sudo dkms build -m zfs -v 2.0.3
-sudo dkms install -m zfs -v 2.0.3 --all
-sudo dkms remove -m zfs -v 2.0.3 --all
+cd /home/fuszenecker/zfs
+sudo ln -s /home/fuszenecker/zfs /usr/src/zfs-2.1.3
+scripts/dkms.mkconf -n zfs -v 2.1.3 -f dkms.conf
+sudo dkms add -m zfs -v 2.1.3
+sudo dkms build -m zfs -v 2.1.3
+sudo dkms install -m zfs -v 2.1.3
+sudo dkms remove -m zfs -v 2.1.3 --all
 sudo dkms status
 ```
