@@ -9,9 +9,7 @@ options zfs zfs_arc_max=536870912
 options zfs zfs_arc_min=536870912
 ```
 
-256 M is `268435456`.
-
-This is 512M on my 4G Raspberry Pi.
+This is 512M on my 4G Raspberry Pi. 256 M is `268435456`.
 
 ## Creating pool and filesystem
 
@@ -98,4 +96,14 @@ Check if the share has been exported:
 ```
 exportfs -s
 showmount -e
+```
+
+## DKMS
+
+```
+scripts/dkms.mkconf -n zfs -v 2.0.3 -f dkms.conf
+sudo dkms add -m zfs -v 2.0.3
+sudo dkms build -m zfs -v 2.0.3
+sudo dkms install -m zfs -v 2.0.3
+sudo dkms status
 ```
