@@ -101,6 +101,12 @@ showmount -e
 ## DKMS
 
 ```
+yay -S zfs-dkms
+```
+
+or
+
+```
 cd /home/fuszenecker/zfs
 sudo ln -s /home/fuszenecker/zfs /usr/src/zfs-2.1.3
 scripts/dkms.mkconf -n zfs -v 2.1.3 -f dkms.conf
