@@ -32,7 +32,7 @@ zpool create \
 
 Compatibility: see `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/compatibility.d`. Good candidates are:
 
-* grub2: for root pools
+* grub2: for **boot** pools, when the kernel and initrd is placed on this file system
 * zol-0.8 = ubuntu-20.04
 * openzfs-2.0-freebsd: everything, except DRAID and EDONR (used for deduplication)
 * openzfs-2.0-linux: everything, except DRAID
