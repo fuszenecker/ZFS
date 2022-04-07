@@ -116,3 +116,29 @@ sudo dkms install -m zfs -v 2.1.3
 sudo dkms remove -m zfs -v 2.1.3 --all
 sudo dkms status
 ```
+
+## Trim and Timers
+
+```
+sudo systemctl edit fstrim.timer
+```
+
+You might want to add:
+
+```
+[Timer]
+OnCalendar=Daily
+```
+
+But it is more important to add the command to trigger trim:
+
+```
+sudo systemctl cat fstrim
+```
+
+By adding:
+
+```
+[Service]
+ExecStart=/usr/bin/zpool trim zfspool
+```
