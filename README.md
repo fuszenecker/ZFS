@@ -133,7 +133,7 @@ OnCalendar=Daily
 But it is more important to add the command to trigger trim:
 
 ```
-sudo systemctl cat fstrim
+sudo systemctl edit fstrim
 ```
 
 By adding:
