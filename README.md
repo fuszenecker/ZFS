@@ -126,6 +126,9 @@ sudo systemctl edit fstrim.timer
 You might want to add:
 
 ```
+[Unit]
+Description=Discard unused blocks once a day
+
 [Timer]
 OnCalendar=Daily
 ```
