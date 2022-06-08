@@ -100,11 +100,19 @@ showmount -e
 
 ## DKMS
 
+If you have a root ZFS:
+
 ```
-yay -S zfs-dkms
+yay -S zfs-dkms-git zfs-utils-git
 ```
 
-or
+If you don't have a root ZFS:
+
+```
+yay -S zfs-dkms zfs-utils
+```
+
+Alternatively, you can setup DKMS manually, however, it is not recommended.
 
 ```
 cd /home/fuszenecker/zfs
