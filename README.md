@@ -16,9 +16,7 @@ This is 512M on my 4G Raspberry Pi. 256 M is `268435456`.
 ### Calculation
 
 You can calculate the absolutely maximum of required memory with these formulas.
-This is the absolute maximum amount of memory.
-
-Lower memory limits will cause less cache hits and more misses, but the ZFS will still operate.
+This is the absolute maximum amount of memory. Lower memory limits will cause less cache hits and more misses, but the ZFS will still operate.
 
 ```
 1 record = 88 bytes of ARC bytes.
