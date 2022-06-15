@@ -2,7 +2,9 @@
 
 ## Memory usage
 
-Set the L2ARC size to a size that make sense on your hardware, edit `/etc/modprobe.d/zfs.conf`:
+### Setup 
+
+Set the ARC size to a size that make sense on your hardware, edit `/etc/modprobe.d/zfs.conf`:
 
 ```
 options zfs zfs_arc_max=536870912
@@ -10,6 +12,25 @@ options zfs zfs_arc_min=536870912
 ```
 
 This is 512M on my 4G Raspberry Pi. 256 M is `268435456`.
+
+### Calculation
+
+```
+1 record = 88 bytes of ARC bytes
+
+If recordsize = 128k (default), then for 1 TByte of pool space
+1 * 1024 * 1024 * 1024 / 128 * 88 = 738197504 bytes (~700 MBytes) ARC memory is needed.
+
+If recordsize = 8k (e.g. for an SQL server), then for 1 TByte of pool space
+1 * 1024 * 1024 * 1024 / 8 * 88 = 11811160064 bytes (~11.2 GBytes) ARC memory is needed.
+```
+
+### Statistics
+
+```
+arc_summary -s arc
+arc_summary -s archits
+```
 
 ## Creating pool and filesystem
 
