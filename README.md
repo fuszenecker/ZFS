@@ -10,6 +10,12 @@ Set the ARC size to a size that make sense on your hardware, edit `/etc/modprobe
 options zfs zfs_arc_max=536870912
 ```
 
+or
+
+```
+echo "536870912" > /sys/module/zfs/parameters/zfs_arc_max
+```
+
 This is 512M on my 4G Raspberry Pi. 256 M is `268435456`.
 
 ### Calculation
