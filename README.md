@@ -10,6 +10,15 @@ sudo apt install zfsutils-linux
 
 ## Memory usage
 
+### Calculation
+
+```
+MAX = (RAM SIZE - 1 GB) * 3/4
+MIN = MAX / 32
+```
+
+In practice: 62.5 MB ... 2 GB. Average: `RAM SIZE / 8 = 512 MB`-
+
 ### Setup 
 
 Set the ARC size to a size that make sense on your hardware, edit `/etc/modprobe.d/zfs.conf`:
