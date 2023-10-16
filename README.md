@@ -50,7 +50,7 @@ Enable few features (when e.g. creating a ZFS pool) in order to do some performa
 zpool create \
     -o compatibility=openzfs-2.0-freebsd \
     -o ashift=12 \
-    -o autotrim=on \
+    -o autotrim=off \
     -O compression=lz4 \
     -O acltype=posix \
     -O atime=off \
@@ -75,6 +75,12 @@ zpool import -d /dev/disk/by-partlabel
 
 ```
 zfs create zfspool/zfs1
+```
+
+Trimming:
+
+```
+zpool trim -w zfspool
 ```
 
 ## Starting services with systemd
