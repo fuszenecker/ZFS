@@ -26,21 +26,6 @@ echo "536870912" > /sys/module/zfs/parameters/zfs_arc_max
 
 This is 512M on my 4G Raspberry Pi. 256 M is `268435456`.
 
-### Calculation
-
-You can calculate the absolutely maximum of required memory with these formulas.
-This is the absolute maximum amount of memory. Lower memory limits will cause less cache hits and more misses, but the ZFS will still operate.
-
-```
-1 record = 88 bytes of ARC bytes.
-
-If recordsize = 128k (default), then for 1 TByte of pool space
-1 * 1024 * 1024 * 1024 / 128 * 88 = 738197504 bytes (~700 MBytes) ARC memory is needed
-
-If recordsize = 8k (e.g. for an SQL server), then for 1 TByte of pool space
-1 * 1024 * 1024 * 1024 / 8 * 88 = 11811160064 bytes (~11.2 GBytes) ARC memory is needed.
-```
-
 ### Statistics
 
 ```
@@ -57,7 +42,7 @@ zpool create \
     -o compatibility=openzfs-2.0-freebsd \
     -o ashift=12 \
     -o autotrim=on \
-    -O compression=zstd-fast \
+    -O compression=lz4 \
     -O acltype=posix \
     -O atime=off \
     -O relatime=on \
