@@ -1,5 +1,13 @@
 # ZFS
 
+## Install
+
+On Ubuntu:
+
+```
+sudo apt install zfsutils-linux
+```
+
 ## Memory usage
 
 ### Setup 
