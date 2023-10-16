@@ -49,9 +49,9 @@ zpool create \
     -o compatibility=openzfs-2.0-freebsd \
     -o ashift=12 \
     -o autotrim=on \
-    -O compression=zstd \
+    -O compression=zstd-fast \
     -O acltype=posix \
-    -O atime=on \
+    -O atime=off \
     -O relatime=on \
     -O xattr=sa \
     -O normalization=formD \
@@ -71,6 +71,10 @@ Compatibility: see `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/co
 
 ```
 zpool import -d /dev/disk/by-partlabel
+```
+
+```
+zfs create zfspool/zfs1
 ```
 
 ## Starting services with systemd
