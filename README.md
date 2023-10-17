@@ -77,12 +77,6 @@ zpool import -d /dev/disk/by-partlabel
 zfs create zfspool/zfs1
 ```
 
-Trimming:
-
-```
-zpool trim -w zfspool
-```
-
 ## Starting services with systemd
 
 On newer systems:
@@ -114,56 +108,6 @@ zfs get keystatus zfspool/encrypted
 zfs mount zfspool/encrypted
 ```
 
-## Sharing with NFS
-
-Enable NFS share on your ZFS filesystem (service principal for NFS server: `nfs/${server}@${REALM}`):
-
-```
-zfs set sharenfs="rw=192.168.100.204,rw=rpi4.local" zfspool/shared
-zfs set sharenfs="rw=@192.168.100.0/24,sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check" zfspool/shared
-```
-
-or 
-
-```
-zfs set sharenfs=on zfspool/shared
-exportfs -o sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check 192.168.100.0/24:/media/zfs/shared
-```
-
-Check if the share has been exported:
-
-```
-exportfs -s
-showmount -e
-```
-
-## DKMS
-
-If you have a root ZFS:
-
-```
-yay -S zfs-dkms-git zfs-utils-git
-```
-
-If you don't have a root ZFS:
-
-```
-yay -S zfs-dkms zfs-utils
-```
-
-Alternatively, you can setup DKMS manually, however, it is not recommended.
-
-```
-cd /home/fuszenecker/zfs
-sudo ln -s /home/fuszenecker/zfs /usr/src/zfs-2.1.3
-scripts/dkms.mkconf -n zfs -v 2.1.3 -f dkms.conf
-sudo dkms add -m zfs -v 2.1.3
-sudo dkms build -m zfs -v 2.1.3
-sudo dkms install -m zfs -v 2.1.3
-sudo dkms remove -m zfs -v 2.1.3 --all
-sudo dkms status
-```
-
 ## Trim and Timers
 
 ```
@@ -191,4 +135,27 @@ By adding:
 ```
 [Service]
 ExecStart=/usr/bin/zpool trim zfspool
+```
+
+## Sharing with NFS
+
+Enable NFS share on your ZFS filesystem (service principal for NFS server: `nfs/${server}@${REALM}`):
+
+```
+zfs set sharenfs="rw=192.168.100.204,rw=rpi4.local" zfspool/shared
+zfs set sharenfs="rw=@192.168.100.0/24,sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check" zfspool/shared
+```
+
+or 
+
+```
+zfs set sharenfs=on zfspool/shared
+exportfs -o sync,sec=krb5:krb5i:krb5p,root_squash,no_subtree_check 192.168.100.0/24:/media/zfs/shared
+```
+
+Check if the share has been exported:
+
+```
+exportfs -s
+showmount -e
 ```
