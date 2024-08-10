@@ -48,7 +48,7 @@ Enable few features (when e.g. creating a ZFS pool) in order to do some performa
 
 ```
 zpool create \
-    -o compatibility=openzfs-2.0-freebsd \
+    -o compatibility=openzfs-2.2 \
     -o ashift=12 \
     -o autotrim=off \
     -O compression=lz4 \
