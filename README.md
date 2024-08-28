@@ -54,7 +54,7 @@ zpool create \
     -O compression=lz4 \
     -O acltype=posix \
     -O atime=off \
-    -O relatime=on \
+    -O relatime=off \
     -O xattr=sa \
     -O normalization=formD \
     -m /media/zfspool \
