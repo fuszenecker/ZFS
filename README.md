@@ -5,7 +5,7 @@
 On Ubuntu:
 
 ```
-sudo apt install zfsutils-linux
+sudo apt install zfsutils-linux zfs-initramfs
 ```
 
 ## Memory usage
