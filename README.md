@@ -57,6 +57,7 @@ zpool create \
     -O relatime=off \
     -O xattr=sa \
     -O normalization=formD \
+    -O listsnapshots=on \
     -m /media/zfspool \
     zfspool ${DISK}
 ```
