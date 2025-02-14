@@ -160,3 +160,17 @@ Check if the share has been exported:
 exportfs -s
 showmount -e
 ```
+
+## ZFS root
+
+Kernel command line:
+
+```
+... root=ZFS=zfsroot rootfstype=zfs rootwait
+```
+
+`fatab`:
+
+```
+zfsroot                 /                zfs     discard         0       1
+```
