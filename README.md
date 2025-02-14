@@ -64,9 +64,11 @@ zpool create \
 
 Compatibility: see `/usr/local/share/zfs/compatibility.d/` or `/usr/share/zfs/compatibility.d`. Good candidates are:
 
-* grub2: for **boot** pools, when the kernel and initrd is placed on this file system
-* openzfs-2.0-linux: ubuntu-20.04 + ZSTD
-* openzfs-2.1-linux: ubuntu-22.04 = ubuntu-20.04 + DRAID + ZSTD
+* `grub2`: for **boot** pools, when the kernel and initrd is placed on this file system (not recommended)
+* `openzfs-2.0-linux`: `ubuntu-20.04` + `zstd_compress`
+* `openzfs-2.1-linux` = `ubuntu-22.04`: `openzfs-2.0-linux` + `draid`
+* `openzfs-2.2-linux`: `openzfs-2.1-linux` + `blake3` + `block_cloning`
+* `openzfs-2.3-linux`: `openzfs-2.2-linux` + `fast_dedup` + `longname` + `raidz_expansion`
 
 ## Importing with right names
 
@@ -83,8 +85,8 @@ zfs create zfspool/zfs1
 On newer systems:
 
 ```
-systemctl enable zfs-import-cache zfs-import-scan zfs-import.target zfs-mount zfs-share zfs-volume-wait zfs-volumes.target zfs-zed zfs.target
-systemctl start zfs-import-cache zfs-import-scan zfs-import.target zfs-mount zfs-share zfs-volume-wait zfs-volumes.target zfs-zed zfs.target
+systemctl enable zfs-import-cache.service zfs-load-module.service zfs-mount.service zfs-share.service zfs-volume-wait.service zfs-zed.service zfs-import.target zfs-volumes.target zfs.target
+systemctl start zfs-import-cache.service zfs-load-module.service zfs-mount.service zfs-share.service zfs-volume-wait.service zfs-zed.service zfs-import.target zfs-volumes.target zfs.target
 ```
 
 ## Encryption
