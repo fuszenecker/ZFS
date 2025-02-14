@@ -172,5 +172,5 @@ Kernel command line:
 `fatab`:
 
 ```
-zfsroot                 /                zfs     discard         0       1
+zfsroot    /    zfs    discard    0 1
 ```
